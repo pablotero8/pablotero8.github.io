@@ -3205,11 +3205,11 @@ input, select, textarea {
 
 	#intro {
 		color: #000000;
-			padding: 8rem 4rem 2rem 0 ;
-		-moz-align-items: flex-start;
-		-webkit-align-items: flex-start;
-		-ms-align-items: flex-start;
-		align-items: flex-start;
+			padding: 8rem 4rem 2rem 4rem ;
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -3259,21 +3259,18 @@ input, select, textarea {
 		@media screen and (max-width: 980px) {
 			#intro {
 				padding: 4rem 2rem 2rem 2rem;
-				align-items: center;
 			}
 		}
 
 		@media screen and (max-width: 736px) {
 			#intro {
 				padding: 3rem 1.5rem 2rem 1.5rem;
-				align-items: center;
 			}
 		}
 
 		@media screen and (max-width: 480px) {
 			#intro {
 				padding: 2rem 1rem 2rem 1rem;
-				align-items: center;
 			}
 		}
 
@@ -3332,21 +3329,22 @@ input, select, textarea {
 			font-size: 5rem;
 			line-height: 1;
 			padding-left: 3rem;
-			margin-bottom: 0.25rem;
+			margin-bottom: 0.5rem;
+			margin-top: 0;
 		}
 
 		#intro p {
 			font-size: 	2rem;
 			font-style: italic;
 			font-family: 'Josefin Slab', "Playfair Display", Georgia, serif;
-			margin-top: 0.25rem;
+			margin-top: 2rem;
 			text-align: center;
-			margin-left: 800px;
+			margin-left: auto;
 			margin-right: auto;
 		}
 
 		#intro .intro-line {
-			display: inline-block;
+			display: block;
 			position: relative;
 			overflow: hidden;
 			clip-path: inset(0 100% 0 0);
@@ -3385,7 +3383,7 @@ input, select, textarea {
 		}
 
 		.indent {
-			margin-left: 3em;
+			margin-left: 0;
 		}
 
 		.indent2 {
@@ -3843,7 +3841,7 @@ input, select, textarea {
 				padding: 5px 10px !important;
 			}
 
-		}
+		
 
 		@media screen and (max-width: 736px) {
 
@@ -5042,9 +5040,9 @@ input, select, textarea {
     background: #000 !important;
 }
 
-/* Logo: quitar recuadro, hacerlo pequeño y clickabe *
+/* Logo: quitar recuadro, hacerlo pequeño y clickabe */
 #header .logo {
-    border: none !important;
+	border: none !important;
     border-width: 0 !important;
     border-style: none !important;
     border-color: transparent !important;
