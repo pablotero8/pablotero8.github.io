@@ -3256,6 +3256,27 @@ input, select, textarea {
 			text-align: center;
 		}
 
+		@media screen and (max-width: 980px) {
+			#intro {
+				padding: 4rem 2rem 2rem 2rem;
+				align-items: center;
+			}
+		}
+
+		@media screen and (max-width: 736px) {
+			#intro {
+				padding: 3rem 1.5rem 2rem 1.5rem;
+				align-items: center;
+			}
+		}
+
+		@media screen and (max-width: 480px) {
+			#intro {
+				padding: 2rem 1rem 2rem 1rem;
+				align-items: center;
+			}
+		}
+
 		#intro blockquote {
 			border-left-color: rgba(0, 0, 0, 0.3);
 		}
