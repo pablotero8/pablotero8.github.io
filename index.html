@@ -6,6 +6,13 @@
 -->
 <html>
 	<head>
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&display=swap" rel="stylesheet">
+
+		<!-- Header: barra superior negra centrada -->
+	<header id="header">
+		<a class="logo">PAODAN HABITS</a>
+	</header>
+
 		<title>PAODAN HABITS</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -14,32 +21,62 @@
 	</head>
 	<body class="is-preload">
 
+	
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
 
 				<!-- Intro -->
 				<div id="intro" class="has-bg">
-						<h1> PAODAN<br />
-						HABITS</h1>
-						<p>Tailored Health. Elevated Lifestyle.
-							<!--a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a--><br />
-							<!--a href="https://html5up.net/license">Creative Commons license</a-->Made for you</p>
-						<ul class="actions">
+						<h1><span class="intro-line line-1">PAODAN</span><br />
+						<span class="intro-line line-2 indent">HABITS</span></h1>
+						<p><span class="intro-line line-3">Tailored Health, Elevated lifestyle.</span></p>
+						<!--p> Elevated lifestyle</p-->
+						<!--ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
+						</ul-->
 					</div>
 
-				<Header>
-					<header id="header">
-						<a href="index.html" class="logo">ABOUT US</a>
-					</header>
+			<!-- Location & Year -->
+				<div id="location-badge">
+					<div class="divider"></div>
+					<p>Dubai, est.2026</p>
+					<div class="divider"></div>
+				</div>
 
+			<!-- Daily/Weekly/Monthly Plans Intro -->
+			<div class="plans-intro-container">
+				<i class="fas fa-dumbbell plans-icon plans-icon-left"></i>
+				<p class="plans-intro">PAODAN  <br> focuses on daily, weekly, and monthly plans designed to deliver premium training and nutrition in one refined, high-performance program.</p>
+				<i class="fas fa-utensils plans-icon plans-icon-right"></i>
+			</div>
+
+			<!-- Value Pillars -->
+				<section id="value-pillars">
+					<div class="pillars-container">
+						<div class="pillar">
+							<div class="pillar-icon">⊕</div>
+							<h3>Elite Training</h3>
+							<p>Precision fitness programs designed based on your goals, tailored to work synergistically with your nutrition plan</p>
+						</div>
+						<div class="pillar">
+							<div class="pillar-icon">⊷</div>
+							<h3>Strategic Nutrition</h3>
+							<p>Science-backed plans that align perfectly with your training regimen, crafted by a Michelin-starred chef</p>
+						</div>
+						<div class="pillar">
+							<div class="pillar-icon">∞</div>
+							<h3>Integrated Premium Wellness</h3>
+							<p>The complete synergy: elite training, strategic nutrition, and culinary excellence working in harmony</p>
+						</div>
+					</div>
+				</section>
+				<div class="divider"></div>
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">ABOUT US</a></li>
-							<li><a href="fservices.html">OUR SERVICES</a></li>
-							<li><a href="faq.html">FAQ</a></li>
+							<li class="active"><a href="#about">ABOUT US</a></li>
+							<li><a href="#services">OUR SERVICES</a></li>
+							<li><a href="#faq">FAQ</a></li>
 						</ul>
 
 						<ul class="icons">
@@ -51,11 +88,12 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Featured Post -->
+						<!-- About Us Section -->
+						<section id="about">
 							<article class="post featured">
 								<header class="major">
+								<h2><a>Who we are????</a></h2>
 									<span class="date">Dani & Erika</span>
-									<h2><a href="#">Who we are</a></h2>
 									<p>Daniel & Erika have over 10 years of expertise in elite fitness, nutrition, and Michelin-starred cuisine to create a refined, results-driven wellness experience.<br /><br>
 
 - Erika is an ISSA-certified personal trainer and nutritionist with more than a decade of experience working with high-profile clients, executives, and public figures. Her work focuses on precision training and strategic nutrition tailored to the most demanding lifestyles. <br/><br/>
@@ -69,9 +107,61 @@ Together they created PAODAN HABITS, where they offer a bespoke wellness service
 									<li><!--a href="#" class="button large">Full Story</a></li-->
 								</ul>
 							</article>
+						</section>
+
+						<!-- Services Section -->
+						<section id="services">
+							<article class="post featured">
+								<header class="major">
+									<h2>Our Services</h2>
+									<p>Choose the wellness plan that best fits your lifestyle and goals.</p>
+								</header>
+							</article>
+
+						<div class="services-container">
+							<article class="service-item">
+								<h3>Digital Coaching Program</h3>
+								<a href="#" class="image fit"><img src="images/pic02.jpg" alt="Digital Coaching" /></a>
+								<p>Complete remote wellness solutions designed for the modern professional. Our expert trainers and nutritionists create a personalized training regimen and meal plan tailored to your specific goals. You maintain complete flexibility—our professionals work with you remotely, eliminating the need for in-home visits while delivering elite-level results from anywhere.</p>
+							</article>
+							<article class="service-item">
+								<h3>Hybrid Wellness Program</h3>
+								<a href="#" class="image fit"><img src="images/pic03.jpg" alt="Hybrid Program" /></a>
+								<p>The perfect balance of convenience and personal attention. Combine remote coaching sessions with in-person training at your preferred location. You choose the frequency and distribution of sessions—whether it's mostly remote with occasional in-home visits, or vice versa. Enjoy the flexibility to adapt your plan as your schedule evolves throughout the year.</p>
+							</article>
+							<article class="service-item">
+								<h3>Premium In-Residence Experience</h3>
+								<a href="#" class="image fit"><img src="images/pic07.jpg" alt="Premium Residence" /></a>
+								<p>Our most comprehensive offering for those seeking complete immersion. Receive personalized training sessions in your home or preferred gym facility, combined with our signature private chef service. Your dedicated chef prepares gourmet meals specifically designed to complement your training program, ensuring optimal nutrition and recovery. True wellness excellence at your residence.</p>
+							</article>
+						</div>
+					</section>
+
+					<!-- FAQ Section -->
+					<section id="faq">
+						<article class="post featured">
+							<header class="major">
+								<h2>Frequently Asked Questions</h2>
+								<p>Everything you need to know about working with us.</p>
+							</header>
+						</article>
+						<div style="text-align: left; max-width: 800px; margin: 0 auto;">
+							<h3>How do I get started?</h3>
+							<p>Contact us for an initial consultation where we'll discuss your goals, lifestyle, and create a personalized plan.</p>
+							
+							<h3>What makes your approach different?</h3>
+							<p>We combine elite fitness training with Michelin-starred culinary expertise and strategic nutrition. This integrated approach delivers results that go beyond traditional training.</p>
+							
+							<h3>Do you work with clients remotely?</h3>
+							<p>We offer both in-person and remote coaching options, tailored to your location and preferences.</p>
+							
+							<h3>What is the time commitment?</h3>
+							<p>Programs are fully customizable to your schedule. We design solutions that fit seamlessly into demanding lifestyles.</p>
+						</div>
+					</section>
 
 						<!-- Posts -->
-							<section class="posts">
+							<section class="posts" style="display:none;">
 								<article>
 									<header>
 										<h2>Dani's job</h2>
@@ -145,21 +235,6 @@ Together they created PAODAN HABITS, where they offer a bespoke wellness service
 									</ul>
 								</article>
 							</section>
-
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
 
 					</div>
 

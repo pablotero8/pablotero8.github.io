@@ -272,4 +272,84 @@
 			update();
 		})();
 
+		// Section Navigation
+		(function() {
+			var $sections = $('#main > section');
+			var $links = $('#nav .links a');
+			
+			// Show first section by default
+			$sections.hide();
+			$('#about').show();
+			
+			// Handle navigation clicks
+			$links.on('click', function(e) {
+				e.preventDefault();
+				var target = $(this).attr('href');
+				
+				// Update active state
+				$links.parent().removeClass('active');
+				$(this).parent().addClass('active');
+				
+				// Show target section, hide others
+				$sections.hide();
+				$(target).fadeIn(300);
+				
+				// Scroll to main smoothly
+				$('html, body').animate({
+					scrollTop: $('#main').offset().top - 100
+				}, 500);
+			});
+		})();
+	// Plans intro reveal on scroll
+	(function() {
+		var $intro = $('.plans-intro');
+		var $icons = $('.plans-icon');
+		if ($intro.length === 0) return;
+
+		function checkAndRevealIntro() {
+			if ($intro.hasClass('revealed')) return;
+
+			var introOffset = $intro.offset();
+			var windowBottom = $(window).scrollTop() + $(window).height();
+			if (windowBottom > introOffset.top + 60) {
+				$intro.addClass('revealed');
+				$icons.addClass('revealed');
+			}
+		}
+
+		$(window).on('scroll', checkAndRevealIntro);
+		setTimeout(function() {
+			checkAndRevealIntro();
+		}, 200);
+	})();
+	// Pillar deployment animation on scroll
+	(function() {
+		var $pillars = $('.pillar');
+		var $valuePillars = $('#value-pillars');
+
+		if ($pillars.length === 0) return;
+
+		function checkAndRevealPillars() {
+			$pillars.each(function(index) {
+				if ($(this).hasClass('revealed')) return;
+
+				var $pillar = $(this);
+				var pilllarOffset = $pillar.offset();
+				var windowBottom = $(window).scrollTop() + $(window).height();
+				
+				// Cada pilar se revela cuando está cerca del viewport
+				if (windowBottom > pilllarOffset.top + 80) {
+					$pillar.addClass('revealed');
+				}
+			});
+		}
+
+		$(window).on('scroll', checkAndRevealPillars);
+		
+		// Check on load
+		setTimeout(function() {
+			checkAndRevealPillars();
+		}, 200);
+	})();
+
 })(jQuery);
