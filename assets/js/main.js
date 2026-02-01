@@ -273,15 +273,19 @@
 		})();
 
 		// Section Navigation
+	// DISABLED: Single-page navigation - removed for multi-page setup
+	// Navigation clicks are now handled by default browser behavior
+	/*
 		(function() {
 			var $sections = $('#main > section');
 			var $links = $('#nav .links a');
 			
-			// Show first section by default
-			$sections.hide();
-			$('#about').show();
+			// DISABLED: Show first section by default - not needed for multi-page navigation
+			// $sections.hide();
+			// $('#about').show();
 			
 			// Handle navigation clicks
+			// DISABLED: Now using multi-page navigation instead of single-page
 			$links.on('click', function(e) {
 				e.preventDefault();
 				var target = $(this).attr('href');
@@ -300,6 +304,8 @@
 				}, 500);
 			});
 		})();
+	*/
+	
 	// Plans intro reveal on scroll
 	(function() {
 		var $intro = $('.plans-intro');
@@ -350,6 +356,200 @@
 		setTimeout(function() {
 			checkAndRevealPillars();
 		}, 200);
+	})();
+
+	// Plans intro phrases animation on scroll
+	(function() {
+		var $phrases = $('.plans-intro-animated');
+
+		if ($phrases.length === 0) return;
+
+		function checkAndRevealPhrases() {
+			$phrases.each(function(index) {
+				if ($(this).hasClass('revealed')) return;
+
+				var $phrase = $(this);
+				var phraseOffset = $phrase.offset();
+				var windowBottom = $(window).scrollTop() + $(window).height();
+				
+				// Cada frase se revela cuando está cerca del viewport
+				if (windowBottom > phraseOffset.top + 80) {
+					$phrase.addClass('revealed');
+				}
+			});
+		}
+
+		$(window).on('scroll', checkAndRevealPhrases);
+		
+		// Check on load
+		setTimeout(function() {
+			checkAndRevealPhrases();
+		}, 200);
+	})();
+
+	// Mobile Menu Toggle
+	(function() {
+		var $hamburgerBtn = $('#hamburger-btn');
+		var $mobileMenu = $('#mobile-menu');
+		var $body = $('body');
+
+		// Toggle mobile menu
+		$hamburgerBtn.on('click', function(e) {
+			e.preventDefault();
+			$mobileMenu.toggleClass('active');
+			$(this).toggleClass('active');
+		});
+
+		// Close menu when clicking a link
+		$('.mobile-menu-links a').on('click', function() {
+			$mobileMenu.removeClass('active');
+			$hamburgerBtn.removeClass('active');
+		});
+
+		// Close menu when clicking outside
+		$(document).on('click', function(e) {
+			if (!$(e.target).closest('#hamburger-btn, .mobile-menu').length) {
+				$mobileMenu.removeClass('active');
+				$hamburgerBtn.removeClass('active');
+			}
+		});
+	})();
+
+	// Services Accordion
+	(function() {
+		var $serviceItems = $('.service-item');
+		if ($serviceItems.length === 0) return;
+
+		$serviceItems.each(function() {
+			var $item = $(this);
+			var $toggle = $item.find('.service-toggle');
+
+			$toggle.on('click', function() {
+				var wasOpen = $item.hasClass('is-open');
+				$serviceItems.removeClass('is-open');
+				$serviceItems.find('.service-toggle')
+					.attr('aria-expanded', 'false')
+					.attr('aria-label', 'Expand plan details');
+
+				if (!wasOpen) {
+					$item.addClass('is-open');
+					$(this)
+						.attr('aria-expanded', 'true')
+						.attr('aria-label', 'Collapse plan details');
+				}
+
+				$('body').toggleClass('services-modal-open', $('.service-item.is-open').length > 0);
+			});
+		});
+
+		$(document).on('click', function(e) {
+			if (!$('body').hasClass('services-modal-open')) return;
+			if ($(e.target).closest('.service-item.is-open, .service-toggle').length) return;
+			$serviceItems.removeClass('is-open');
+			$serviceItems.find('.service-toggle')
+				.attr('aria-expanded', 'false')
+				.attr('aria-label', 'Expand plan details');
+			$('body').removeClass('services-modal-open');
+		});
+	})();
+
+	// Testimonials Carousel with Horizontal Scroll
+	(function() {
+		document.addEventListener('DOMContentLoaded', function() {
+			const wrapper = document.querySelector('.testimonials-wrapper');
+			const track = document.querySelector('.testimonials-track');
+			
+			if (!wrapper || !track) {
+				console.log('Testimonials carousel not found');
+				return;
+			}
+
+			let isDown = false;
+			let startX;
+			let currentTranslate = 0;
+
+			// Mouse down - start drag
+			wrapper.addEventListener('mousedown', function(e) {
+				isDown = true;
+				wrapper.style.cursor = 'grabbing';
+				startX = e.clientX;
+				track.style.animation = 'none';
+			});
+
+			// Mouse move - drag
+			document.addEventListener('mousemove', function(e) {
+				if (!isDown) return;
+				
+				const x = e.clientX;
+				const walk = (x - startX) * 1.5; // Speed of drag
+				const newTranslate = currentTranslate + walk;
+				
+				track.style.transform = 'translateX(' + newTranslate + 'px)';
+			});
+
+			// Mouse up - stop drag
+			document.addEventListener('mouseup', function() {
+				if (!isDown) return;
+				isDown = false;
+				wrapper.style.cursor = 'grab';
+				
+				// Get final translate value
+				const transform = track.style.transform;
+				const match = transform.match(/translateX\((.+)px\)/);
+				if (match) {
+					currentTranslate = parseFloat(match[1]);
+				}
+				
+				// Resume animation after a brief moment
+				setTimeout(() => {
+					track.style.animation = 'scroll-testimonials 25s linear infinite';
+				}, 100);
+			});
+
+			// Wheel scroll - only horizontal
+			wrapper.addEventListener('wheel', function(e) {
+				// Only respond to horizontal scroll (trackpad)
+				// On Mac, horizontal scroll comes through deltaX
+				// If there's vertical scroll, ignore it
+				
+				if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+					// Vertical scroll is more pronounced, so it's a vertical scroll - ignore
+					return;
+				}
+				
+				e.preventDefault();
+				
+				// Use deltaX for horizontal scroll, or deltaY if it's being used horizontally
+				const scrollAmount = e.deltaX || e.deltaY * 0.5;
+				const newTranslate = currentTranslate - scrollAmount;
+				
+				track.style.animation = 'none';
+				track.style.transform = 'translateX(' + newTranslate + 'px)';
+				
+				// Update current translate
+				currentTranslate = newTranslate;
+				
+				// Resume animation after scroll stops
+				clearTimeout(window.wheelTimeout);
+				window.wheelTimeout = setTimeout(() => {
+					track.style.animation = 'scroll-testimonials 25s linear infinite';
+				}, 1500);
+			}, { passive: false });
+
+			// Pause animation on hover
+			wrapper.addEventListener('mouseenter', function() {
+				if (!isDown) {
+					track.style.animationPlayState = 'paused';
+				}
+			});
+
+			// Resume animation on mouse leave
+			wrapper.addEventListener('mouseleave', function() {
+				if (!isDown) {
+					track.style.animationPlayState = 'running';
+				}
+			});
+		});
 	})();
 
 })(jQuery);
